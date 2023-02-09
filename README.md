@@ -3,10 +3,9 @@ A not-so-new <i>Flutter</i> Application <b>arises</b>.
 ## First Considerations
 
 I'm using as references:
-[x] - Alura Classes (Flutter Course),
-[x] - Flutter Apprentice by **Mike, Moore & Ngo**.
-[x] - Beginning Flutter 3.0 with Dart by **Sanjib Sinha**.
-
+- [x] Alura Classes (Flutter Course),
+- [x] Flutter Apprentice by **Mike, Moore & Ngo**.
+- [x] Beginning Flutter 3.0 with Dart by **Sanjib Sinha**.
 
 # Getting Started
 
@@ -17,12 +16,12 @@ cross-platform apps. Flutter apps consist of a series of packages, plugins and w
 not all. Flutter is a process, a philosophy and a community as well.</p>
 
 Flutter ->
-[x] - is *Open-Source*.
-[x] - uses *Dart* programming language, a modern C-style, UI-focused language.
-[x] - has *Hot Reload*, which allows you to make updates to the code that reflect without recompiling.
-[x] - has *Material Design* natively.
-[x] - has *composable* widgets, giving you room for creativity.
-[x] - has *Platform Integration*, making it possible to to support Kotlin, Java, o-C and Swift code.
+- [x] is *Open-Source*.
+- [x] uses *Dart* programming language, a modern C-style, UI-focused language.
+- [x] has *Hot Reload*, which allows you to make updates to the code that reflect without recompiling.
+- [x] has *Material Design* natively.
+- [x] has *composable* widgets, giving you room for creativity.
+- [x] has *Platform Integration*, making it possible to to support Kotlin, Java, o-C and Swift code.
 
 # Flutter Structure
 
