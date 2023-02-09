@@ -9,6 +9,8 @@ I'm using as references:
 
 # Getting Started
 
+'Everything is a Widget.'
+
 ## What is Flutter
 
 <p>In the simplest terms, Flutter is a software development toolkit from Google for building
