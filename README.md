@@ -1,6 +1,6 @@
 # lesson_one
 
-A not-so-new Flutter Application <b>arises</b>
+A not-so-new <i>Flutter</i> Application <b>arises</b>
 
 ## Getting Started
 
