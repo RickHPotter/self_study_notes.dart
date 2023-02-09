@@ -8,7 +8,7 @@ I'm using as references:
 - [x] Beginning Flutter 3.0 with Dart by **Sanjib Sinha**.
 
 # Getting Started
-s
+
 ## What is Flutter
 
 <p>In the simplest terms, Flutter is a software development toolkit from Google for building
