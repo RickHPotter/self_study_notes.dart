@@ -1,6 +1,6 @@
 # lesson_one
 
-A new Flutter project.
+<b>A not-so-new Flutter Application arises<\b>
 
 ## Getting Started
 
