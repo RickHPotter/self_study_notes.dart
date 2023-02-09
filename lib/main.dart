@@ -26,42 +26,61 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'RobotoSlab'),
             ),
           ),
-          body: Container(
-            color: const Color.fromARGB(50, 100, 100, 100),
-            height: 700,
-            child: Stack(
-              children: [
-                Container(
-                  color: Colors.blue, height: 140,
-
-                ),
-                Container(
-                  color: Colors.white, height: 100,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        color: Colors.black26, width: 72, height: 100,
-                      ),
-                      const Text(
-                        'English - Module I',
-                        style: TextStyle(
-                          fontSize: 26,
-                          fontFamily: 'Raleway',
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      ElevatedButton(
-                          onPressed: () {},
-                          child: const Icon(Icons.arrow_drop_up)),
-                    ],
-                  ),
-                )
-              ],
-            ),
+          body: Column(
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: const [
+              Task(title: 'English - Module III'),
+              Task(title: 'Spain - Module IV'),
+              Task(title: 'French - Module I'),
+              Task(title: 'Portuguese - Module VI'),
+            ],
           ),
           floatingActionButton: FloatingActionButton(onPressed: () {})
         ),
+    );
+  }
+}
+
+class Task extends StatelessWidget {
+  const Task({Key? key, required this.title})
+  : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          color: Colors.blue, height: 140,
+        ),
+        Container(
+          color: Colors.white, height: 100,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(
+                height: 80, width: 100,
+                child: Image(
+                  image: AssetImage('assets/images/fr.jpg'),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Raleway',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              ElevatedButton(
+                  onPressed: () {},
+                  child: const Icon(Icons.arrow_drop_up)),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
