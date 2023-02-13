@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lesson_one/data/task_inherited.dart';
 // import 'package:flutter/cupertino.dart';
 
 import 'routes/init.dart';
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomeScreen()
+        home: TaskInherited(child: const HomeScreen())
+        // home: const HomeScreen()
         // home: const FormScreen()
     );
   }

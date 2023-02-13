@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lesson_one/data/task_inherited.dart';
 // import 'package:flutter/cupertino.dart';
 
-import '../components/task.dart';
+// import '../components/task.dart';
 import 'form.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,37 +24,8 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         color: const Color.fromARGB(40, 236, 249, 255),
         child: ListView(
-          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: const [
-            Task(
-              title: 'Portuguese - Module I',
-              path: 'assets/images/br.jpg',
-              difficulty: 3,
-            ),
-            Task(
-              title: 'English - Module I',
-              path: 'assets/images/gb.jpg',
-              difficulty: 1,
-            ),
-            Task(
-              title: 'Spanish - Module I',
-              path: 'assets/images/sp.jpg',
-              difficulty: 3,
-            ),
-            Task(
-              title: 'French - Module I',
-              path: 'assets/images/fr.jpg',
-              difficulty: 2,
-            ),
-            Task(
-              title: 'Portuguese - Module VII',
-              path: 'assets/images/br.jpg',
-              difficulty: 5,
-            ),
-            SizedBox(
-              height: 80,
-            )
-          ],
+          padding: const EdgeInsets.only(top: 8, bottom: 80),
+          children: TaskInherited.of(context).taskList,
         ),
       ),
         floatingActionButton: FloatingActionButton(
@@ -61,7 +33,7 @@ class HomeScreen extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const FormScreen())
+                      builder: (newContext) => FormScreen(taskContext: context))
               );
         },
           child: const Icon(Icons.add),

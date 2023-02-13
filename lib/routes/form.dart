@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lesson_one/data/task_inherited.dart';
 // import 'package:flutter/cupertino.dart';
 
 class FormScreen extends StatefulWidget {
-  const FormScreen({Key? key}) : super(key: key);
+  const FormScreen({Key? key, required this.taskContext}) : super(key: key);
+
+  final BuildContext taskContext;
 
   @override
   State<FormScreen> createState() => _FormScreenState();
@@ -15,6 +18,13 @@ class _FormScreenState extends State<FormScreen> {
   TextEditingController imageController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
+  bool isValid({required String? value, type}) {
+    if (value == null) return false;
+    if (value.isNotEmpty && type == null) return true;
+    if (type == 'url') return value.contains('http');
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +55,9 @@ class _FormScreenState extends State<FormScreen> {
                         controller: nameController,
                         keyboardType: TextInputType.name,
                         validator: (String? value) {
-                          if(value != null && value.isEmpty) {
-                          return 'Insert the Module Name';
-                          }
-                          return null;
+                          return (isValid(value: value))
+                              ? null
+                              : 'Insert the Module Name';
                         },
                         textAlign: TextAlign.center,
                         decoration: const InputDecoration(
@@ -64,12 +73,12 @@ class _FormScreenState extends State<FormScreen> {
                       child: TextFormField(
                         controller: difficultyController,
                         keyboardType: TextInputType.number,
-                        validator: (value) {
-                          int v = int.parse(value!);
-                          if(value.isEmpty || v < 1 || v > 5) {
-                            return 'Insert the Difficulty Level';
-                          }
-                          return null;
+                        validator: (String? value) {
+                          return (isValid(value: value) &&
+                              int.parse(value!) >= 1 &&
+                              int.parse(value) <= 5)
+                          ? null
+                          : 'Insert the Difficulty Level.';
                         },
                         textAlign: TextAlign.center,
                         decoration: const InputDecoration(
@@ -86,7 +95,9 @@ class _FormScreenState extends State<FormScreen> {
                         controller: imageController,
                         keyboardType: TextInputType.url,
                         validator: (value) {
-                          return value!.isEmpty ? 'Insert the Image URL' : null;
+                          return (isValid(value: value, type: 'url'))
+                              ? null
+                              : 'Insert the Image URL';
                         },
                         onChanged: (text) {
                           setState(() {
@@ -125,13 +136,18 @@ class _FormScreenState extends State<FormScreen> {
                     ),
                     ElevatedButton(
                         onPressed: (){
+                          print(difficultyController.text);
                           if(_formKey.currentState!.validate()) {
+                            TaskInherited.of(widget.taskContext).newTask(
+                                title: nameController.text,
+                                difficulty: int.parse(difficultyController.text),
+                                path: imageController.text);
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('Saving...'),
                                 ),
                             );
-                             Navigator.pop(context);
+                            Navigator.pop(context);
                           }
                         },
                         child: const Text('Add'),
