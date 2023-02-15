@@ -36,7 +36,11 @@ class TaskInherited extends InheritedWidget {
     ),
   ];
 
-  void newTask({required String title, required int difficulty, required String path}) {
+  void newTask({
+    required String title,
+    required int difficulty,
+    required String path
+  }) {
     taskList.add(Task(title: title, difficulty: difficulty, path: path));
   }
 
