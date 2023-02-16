@@ -11,9 +11,9 @@ class Task extends StatefulWidget {
     required this.difficulty})
       : super(key: key);
 
-  final String title;
-  final String path;
-  final int difficulty;
+  String title;
+  String path;
+  int difficulty;
 
   int level = 0;
 
@@ -83,9 +83,10 @@ class _TaskState extends State<Task> {
                       SizedBox(
                         height: 52, width: 52,
                         child: ElevatedButton(
-                          onLongPress: () {
+                          onLongPress: () async {
+                              await TaskDao().delete(widget.title);
                             setState(() {
-                              TaskDao().delete(widget.title);
+                              debugPrint('[TASK] - deleting task');
                             });
                           },
                             onPressed: () {

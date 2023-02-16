@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {
                 setState(() {});
               },
-              icon: const Icon(Icons.refresh)),
+              icon: const Icon(Icons.refresh_sharp)),
         ],
         title: const Text(
           'Learning Progress',
@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         color: const Color.fromARGB(40, 236, 249, 255),
         padding: const EdgeInsets.only(top: 8, bottom: 80),
-        child: FutureBuilder<List<Task>>(
+        child: FutureBuilder<List<Task>> (
             future: TaskDao().findAll(),
             builder: (context, snapshot) {
               List<Task>? items = snapshot.data;

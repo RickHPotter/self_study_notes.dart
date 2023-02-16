@@ -137,18 +137,24 @@ class _FormScreenState extends State<FormScreen> {
                       ),
                     ),
                     ElevatedButton(
-                        onPressed: (){
+
+                        onPressed: () async{
                           if(_formKey.currentState!.validate()) {
-                            TaskDao().create(Task(
-                                title: nameController.text,
-                                difficulty: int.parse(difficultyController.text),
-                                path: imageController.text));
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Saving...'),
-                                ),
-                            );
                             Navigator.pop(context);
+                            await TaskDao().create(
+                                Task(
+                                    title: nameController.text,
+                                    difficulty: int.parse(difficultyController.text),
+                                    path: imageController.text
+                                )
+                            );
+                            if (mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Saving...'),
+                                  ),
+                              );
+                            }
                           }
                         },
                         child: const Text('Add'),
