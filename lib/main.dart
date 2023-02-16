@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lesson_one/data/task_inherited.dart';
 // import 'package:flutter/cupertino.dart';
 
-import 'routes/init.dart';
-// import 'routes/form.dart';
+import 'screens/init.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,8 +20,6 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: TaskInherited(child: const HomeScreen())
-        // home: const HomeScreen()
-        // home: const FormScreen()
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:lesson_one/data/database.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -13,7 +14,7 @@ class TaskDao {
       '$_name TEXT, $_difficulty INTEGER, $_url TEXT)';
 
   List<Task> toList(List<Map<String, dynamic>> tasksMap) {
-    print('Parsing Map into List...');
+    debugPrint('[TASK_DAO] Parsing Map into List...');
     final List<Task> tasks = [];
     for (Map<String, dynamic> line in tasksMap) {
       final Task task = Task(
@@ -23,31 +24,31 @@ class TaskDao {
       );
       tasks.add(task);
     }
-    print('Tasks List $tasks.');
+    debugPrint('[TASK_DAO] Tasks List $tasks.');
     return tasks;
   }
 
   Map<String, dynamic> toMap(Task task) {
-    print('Parsing List into Map...');
+    debugPrint('[TASK_DAO] Parsing List into Map...');
     final Map<String, dynamic> tasks = {};
     tasks.addAll(
         {_name: task.title, _url: task.path, _difficulty: task.difficulty});
-    print('TasksMap has been created $tasks.');
+    debugPrint('[TASK_DAO] TasksMap has been created $tasks.');
     return tasks;
   }
 
   // CREATE
   create(Task task) async {
-    print('Initiating database...');
+    debugPrint('[TASK_DAO] Initiating database...');
     final Database db = await getDataBase();
     var itemExists = await findSome(task.title);
     Map<String, dynamic> tasksMap = toMap(task);
 
     if (itemExists.isEmpty) {
-      print('Task does not exist.');
+      debugPrint('[TASK_DAO] Task does not exist.');
       return await db.insert(_tableName, tasksMap);
     } else {
-      print('Task already exists.');
+      debugPrint('[TASK_DAO] Task already exists.');
       return await db.update(_tableName, tasksMap,
           where: '$_name = ?', whereArgs: [task.title]);
     }
@@ -55,22 +56,24 @@ class TaskDao {
 
   // READ
   Future<List<Task>> findAll() async {
-    print('Accessing findAll()');
+    debugPrint('[TASK_DAO] Accessing findAll()');
     final Database db = await getDataBase();
     final List<Map<String, dynamic>> tasks = await db.query(_tableName);
-    print('Looking up data... \nFound $tasks');
+    debugPrint('[TASK_DAO] Looking up all data...\n'
+        '[TASK_DAO] CONT. Found $tasks');
     return toList(tasks);
   }
 
   Future<List<Task>> findSome(String taskName) async {
-    print('Accessing findSome()');
+    debugPrint('[TASK_DAO] Accessing findSome()');
     final Database db = await getDataBase();
     final List<Map<String, dynamic>> tasks = await db.query(
       _tableName,
       where: '$_name = ?',
       whereArgs: [taskName],
     );
-    print('Looking up data... \nFound $tasks');
+    debugPrint('[TASK_DAO] Looking up data with name = $taskName...\n'
+        '[TASK_DAO] CONT. Found $tasks');
     return toList(tasks);
   }
 
@@ -78,7 +81,7 @@ class TaskDao {
 
   // DELETE
   delete(String taskName) async {
-    print('Deleting task...');
+    debugPrint('[TASK_DAO] Deleting task...');
     final Database db = await getDataBase();
     return db.delete(
       _tableName,

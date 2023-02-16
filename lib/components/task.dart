@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lesson_one/data/task_dao.dart';
 // import 'package:flutter/cupertino.dart';
 
 import 'difficulty.dart';
@@ -82,9 +83,17 @@ class _TaskState extends State<Task> {
                       SizedBox(
                         height: 52, width: 52,
                         child: ElevatedButton(
+                          onLongPress: () {
+                            setState(() {
+                              TaskDao().delete(widget.title);
+                            });
+                          },
                             onPressed: () {
                               setState(() {
                                 widget.level++;
+                                if (widget.level == widget.difficulty * 10) {
+                                  TaskDao().delete(widget.title);
+                                }
                               });
                             },
                             child: Column(
