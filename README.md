@@ -98,14 +98,31 @@ majority of widgets in Flutter are simply combinations of other simples widgets.
 
 ### SingleChildScrollView
 
+This widget is useful when you have a single box that will normally be entirely visible, for example
+a clock face in a time picker, but you need to make sure it can be scrolled if the container gets too
+small in one axis (the scroll direction).
 
+It is also useful if you need to shrink-wrap in both axes (the main scrolling direction as well as
+the cross axis), as one might see in a dialog or pop-up menu. In that case, you might pair the
+SingleChildScrollView with a ListBody child.
+
+When you have a list of children and do not require cross-axis shrink-wrapping behavior, for example
+a scrolling list that is always the width of the screen, consider ListView, which is vastly more
+efficient than a SingleChildScrollView containing a ListBody or Column with many children.
 
 ### SnackBar
 
+A lightweight message with an optional action which briefly displays at the bottom of the screen.
 
+### FutureBuilder
 
-###
-
+Widget that builds itself based on the latest snapshot of interaction with a Future.
+Widget rebuilding is scheduled by the completion of the Future, using setState(). The Future must
+have been obtained earlier, e.g. during State.initState, State.didUpdateWidget, or 
+State.didChangeDependencies. It must not be created during the State.build or StatelessWidget.build
+method call when constructing the FutureBuilder. If the future is create as the same time as the
+FutureBuilder, then every time the FutureBuilder's parent is rebuilt, the asynchronous task will
+be restarted.
 
 ## Types of Widgets
 
@@ -291,6 +308,3 @@ There are three primary ways to save data to your device:
 3. Use a SQLite database.
     - Exactly what you need for when you have to persist and query large amounts of
     data on the local device. It's got faster inserts and updates.
-
-
-# State Management
