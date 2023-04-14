@@ -1,8 +1,12 @@
-A not-so-new <i>Flutter</i> Application <b>arises</b>.
+# Getting Started
+
+A not-so-new *Flutter* Application **arises**.
+'Everything is a Widget.'
 
 ## First Considerations
 
 I'm using as references:
+
 - [x] Alura Classes (Flutter Course),
 - [x] Flutter Apprentice by **Mike, Moore & Ngo**.
 - [x] Beginning Flutter 3.0 with Dart by **Sanjib Sinha**.
@@ -10,15 +14,12 @@ I'm using as references:
 
 ___
 
-# Getting Started
-
-'Everything is a Widget.'
-
 ## What is Flutter
 
 In the simplest terms, Flutter is a software development toolkit from Google for building cross-platform apps. Flutter apps consist of a series of packages, plugins and widgets - but that's not all. Flutter is a process, a philosophy and a community as well.
 
 Flutter ->
+
 - [x] is *Open-Source*.
 - [x] uses *Dart* programming language, a modern C-style, UI-focused language.
 - [x] has *Hot Reload*, which allows you to make updates to the code that reflect without recompiling.
@@ -26,9 +27,7 @@ Flutter ->
 - [x] has *composable* widgets, giving you room for creativity.
 - [x] has *Platform Integration*, making it possible to support Kotlin, Java, o-C and Swift code.
 
-__
-
-# Flutter Structure
+## Flutter Structure
 
 Class defines the Type of an Object, as we learned in Dart. In the same way, in Flutter, every Widget, or Class, has its own 'Type'. The Flutter Structure starts with one Widget, after that, a branch of Widgets, and so it goes in the shape of a tree. Each Widget is a separate Class, however they are connected with each other.
 
@@ -42,7 +41,7 @@ Widgets describe what their view should look like given their current configurat
 A Widget that surrounds the child with some padding and applies additional constraints to the padded extent. Containers with no children try to be as big as possible. In short, Containers try, in order, to size itself to the child, to honor the width, height, and constraints, to fit the parent, to be as small as possible.  
 When using a Container for the whole purpose of constraining a size, use *SizedBox* instead.
 
-### Stack 
+### Stack
 
 A useful class if you want to overlap several children in a simple way, for example, having some text and an image, overlaid with a gradient and a button attached to the bottom. A Stack can be used to position its children relative to the edges of its box, making it possible to to position widgets over one another.  
 If you want to lay a number of children out in a particular pattern, or if you want to make a custom layout manager, you probably want to use CustomMultiChildLayout instead, because when using Stack, you can't position children relative to their size or the Stack's own size.
@@ -105,6 +104,7 @@ The lifecycle of Stateless Widgets starts with a constructor, which you can pass
 ![Flutter Apprentice, Page 147](/docs/flutter_apprentice_p147.png)
 
 The events that trigger this kind of widget to update are:
+
 1. The Widget is inserted into the Widget Tree for the first time.
 2. The state of a dependency or Inherited Widget - ancestor nodes - changes.
 
@@ -123,14 +123,17 @@ Every widget's build() method takes a BuildContext as an argument. The build con
 
 ![Flutter Apprentice, Page 149](/docs/flutter_apprentice_p149.png)
 
-1. When you assign the Build Context to the Widget, an internal flag, _mounted_, is set to _true_. This lets the framework know that this widget is currently on the Widget Tree.
+1. When you assign the Build Context to the Widget, an internal flag, *mounted*, is set to *true*. This lets the framework know that this widget is currently on the Widget Tree.
 
-# Widget Tree, Build, and BuildContext
+___
+
+## Widget Tree, Build, and BuildContext
 
 Every widget contains a build() method. In this method, you create a UI composition by nesting widgets within other widgets. This forms a *tree-like data structure*. Each widget can contain other widgets, commonly called *children*.
 The Widget Tree provides a blueprint that describes how you want to lay out your UI. The framework moves the nodes forth and back in the tree and calls each build() method to compose your entire UI.
 
-## The Four Parts of Framework Layer
+### The Four Parts of Framework Layer
+
 There are three layers in Flutter's Architecture, they are:  
 Framework (Dart); Engine (C/C++); Embedder (Platform-specific).
 
@@ -145,22 +148,25 @@ Material or Cupertino; Widgets; Rendering; Foundation.
 
 - Foundation, also known as the dart:ui layer, contains core libraries that handle animation, painting and gestures.
 
-## The Trees
+### The Trees
+
 Flutter's Framework manages three trees in parallel:
 
 - Widget: The public API or blueprint for the framework. Dev usually just deal with composing widgets.
 
 - Element: Manages a widget and a widget's render object. For every widget instance in the tree, there is a corresponding element.
-	1. ComponentElement: A type of element that's composed of other elements. 	This corresponds to composing widgets inside other widgets. You can think 	of it as a group of elements.
-	2. RenderObjectElement: A type of element that holds a render object. You 	can think of it as a single element.
+  - ComponentElement: A type of element that's composed of other elements. This corresponds to composing widgets inside other widgets. You can think of it as a group of elements.
+  - RenderObjectElement: A type of element that holds a render object. You can think of it as a single element.
 
 - RenderObject: Responsible for drawing and laying out a specific widget instance, it also handles user interactions, like hit-testing and gestures.
 
-# Navigation and Routing
+___
+
+## Navigation and Routing
 
 Navigation, or how users switch between screens, is an important concept to master. Good navigation keeps your app organised and helps users find their way around without getting frustrated.
 
-## Navigator 1.0
+### Navigator 1.0
 
 In Flutter, you use a Navigator Widget to manage your screens or pages, as though they were routes. It uses a stack to control the routes. A Stack is a data structure that manages pages. You insert the elements last in, first out (LIFO), and only the element at the top of the stack is visible to the user.
 
@@ -168,9 +174,9 @@ Before Flutter 1.22, you could only shift between screens by using direct comman
 
 The imperative API may seem natural and easy to use, but, in practice, it's hard to manage and scale. Another disadvantage of Navigator 1.0 is that it doesn't update the web URL path, which may, sometimes, cause the browser's forwards and backwards buttons not to work as expected. And finally, the Back button on Android devices might not work with Navigator 1.0 when you have nested navigators or add Flutter to your host Android app.
 
-## Router API
+### Router API
 
-Introduced in Flutter 1.22, a new declarative API that lets you control your navigation stack completely, also known as Navigator 2.0, Router API aims to feel more Flutter-like while solving the plain problems of Nav 2.0. 
+Introduced in Flutter 1.22, a new declarative API that lets you control your navigation stack completely, also known as Navigator 2.0, Router API aims to feel more Flutter-like while solving the plain problems of Nav 2.0.
 With Router API, you can manipulate and manage your page routes, with more power and more control; you can use imperative and declarative styles in the same app, which makes it backwards compatible; it gives you control over which navigator (in nested navigators) has the priority; you can parse routes and handle web URLs and deep linking.
 
 ![Flutter Apprentice, Page 281](/docs/flutter_apprentice_p281.png)
@@ -179,23 +185,26 @@ With Router API, you can manipulate and manage your page routes, with more power
 - *Router*: Handles configuring the list of Pages the Navigator displays. Plus the Router is a listener of the state, so it receives a notification when the state changes.
 - *RouterDelegate*: Defines how the router listens for changes to the app state to rebuild the navigator's configuration.
 - *RouteInformationProvider*: Provides RouteInformation to the router. Route information contains the location info and state object to configure your app.
-- *RouteInformationParser*: Parses route info into a user-defined data type. 
+- *RouteInformationParser*: Parses route info into a user-defined data type.
 - *BackButtonDispatcher*: Reports presses on the platform system's Back button to the router.
 - *TransitionDelegate*: Decides how pages transition into and out of the screen.
 
-## Navigator 1.0 vs Navigator 2.0 (Router API)
+### Navigator 1.0 vs Navigator 2.0 (Router API)
 
 For medium to large apps, consider using a declarative API and a Router Widget when managing a lot of your navigation state.
 For small apps, the imperative API is suitable to rapid prototyping and/or creating small app for demos. Sometimes push and pop are all you need.
 
-# Networking, Persistence and State
+___
+
+## Networking, Persistence and State
 
 Most apps interact with the network to retrieve data and then persist that data locally in some form of cache, such as a database.
 
 There are three primary ways to save data to your device:
-1. Write formatted data, like JSON, to a file.
-	- Simples, but requires you to handle reading and writing data in the correct format and order.
-2. Use a library or a plugin to write simple data to a shared location.
-	- The shared_preferences plugin can be used to persist key-value data on disk.
-3. Use a SQLite database.
-    - Exactly what you need for when you have to persist and query large amounts of data on the local device. It's got faster inserts and updates.
+
+- Write formatted data, like JSON, to a file.
+  - Simple, but requires you to handle reading and writing data in the correct format and order.
+- Use a library or a plugin to write simple data to a shared location.
+  - The shared_preferences plugin can be used to persist key-value data on disk.
+- Use a SQLite database.
+  - Exactly what you need for when you have to persist and query large amounts of data on the local device. It's got faster inserts and updates.
